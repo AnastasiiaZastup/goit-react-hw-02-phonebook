@@ -1,5 +1,6 @@
-import { Formik, Field, Form , ErrorMessage} from 'formik';
+import { Field, ErrorMessage, Button} from 'formik';
 import * as Yup from 'yup';
+import {StyledForm, FormikForm} from './ContactForm.styled';
 
 
 const phoneExample = /^\d{3}-\d{2}-\d{2}$/;
@@ -15,7 +16,7 @@ const phoneExample = /^\d{3}-\d{2}-\d{2}$/;
 export const ContactForm = ({onAdd}) => {
     return (
         
-        <Formik
+        <FormikForm
             initialValues={{
                 name: '',
                 number: '',
@@ -27,7 +28,7 @@ export const ContactForm = ({onAdd}) => {
                     actions.resetForm();
                 }}
             >
-                <Form>
+                <StyledForm>
                     <label>Name
                     <Field name="name" />
                     <ErrorMessage name="name" component = "span"/>
@@ -39,9 +40,9 @@ export const ContactForm = ({onAdd}) => {
                      <ErrorMessage name="number" component = "span" />
                     </label>
                    
-                    <button type="submit">Submit</button>
-                </Form>
-            </Formik>
+                    <Button type="submit">Submit</Button>
+                </StyledForm>
+            </FormikForm>
         
     );
 };
