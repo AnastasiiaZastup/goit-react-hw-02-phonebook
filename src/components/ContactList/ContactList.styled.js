@@ -4,7 +4,7 @@ export const Item = styled.li`
     display: flex;
     gap: 18px;
     margin-left: 50px;
-    margin-bottom: 18px;
+    margin-bottom: 19px;
     font-size: 18px;
     font-weight: 500;
     align-items: center;
