@@ -1,7 +1,13 @@
-import { Field, ErrorMessage, Button} from 'formik';
+import React from 'react';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
-import {StyledForm, FormikForm} from './ContactForm.styled';
-
+import {
+    Wrapper,
+    Form,
+    Field,
+    ErrorMessage,
+    Label,
+} from './ContactForm.styled';
 
 const phoneExample = /^\d{3}-\d{2}-\d{2}$/;
  const ContactSchema = Yup.object().shape({
@@ -16,33 +22,36 @@ const phoneExample = /^\d{3}-\d{2}-\d{2}$/;
 export const ContactForm = ({onAdd}) => {
     return (
         
-        <FormikForm
+        <Wrapper>
+            <Formik
             initialValues={{
                 name: '',
                 number: '',
             }}
             
-            validationSchema={ContactSchema}
+           
             onSubmit={(values, actions) => {
                 onAdd(values);
                     actions.resetForm();
                 }}
+                 validationSchema={ContactSchema}
             >
-                <StyledForm>
-                    <label>Name
+                <Form>
+                    <Label>Name
                     <Field name="name" />
                     <ErrorMessage name="name" component = "span"/>
-                    </label>
+                    </Label>
                     
 
-                    <label>Number
+                    <Label>Number
                     <Field name="number" />
                      <ErrorMessage name="number" component = "span" />
-                    </label>
+                    </Label>
                    
-                    <Button type="submit">Submit</Button>
-                </StyledForm>
-            </FormikForm>
+                    <button type="submit">Submit</button>
+                </Form>
+                </Formik>
+            </Wrapper>
         
     );
 };
